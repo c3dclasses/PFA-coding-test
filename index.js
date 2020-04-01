@@ -124,7 +124,7 @@ Calculator.prototype = {
 			if(this.isOperator(token.trim())) {
 				let op2 = stack.pop();
 				let op1 = stack.pop();
-				stack.push(this.eval(token,parseFloat(op1),parseFloat(op2)))
+				stack.push(this.evaluate(token,parseFloat(op1),parseFloat(op2)))
 			}
 			else {
 				stack.push(token);
@@ -134,7 +134,7 @@ Calculator.prototype = {
 		return stack[stack.length-1]
 	},
 
-	eval: function(operation, operand1, operand2) {
+	evaluate: function(operation, operand1, operand2) {
 		switch(operation) {
 			case '+': 
 				return operand1 + operand2;
