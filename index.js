@@ -4,6 +4,7 @@ function Calculator(tableid) {
 	this.undoops = [];
 	this.bdecimal = false;
 	this.precedence = {"+":1, "-":1, "*":2, "/":2};
+	
 	this.table = document.getElementById(tableid)
 	this.input = document.getElementById("input");
 	this.result = document.getElementById("result");
@@ -119,8 +120,6 @@ Calculator.prototype = {
 	evaluatePostfixExpression: function(postfixexp) {
 		var stack = [];
 		
-		console.log(postfixexp);
-		
 		for(let token of postfixexp) {
 			if(this.isOperator(token.trim())) {
 				let op2 = stack.pop();
@@ -131,8 +130,6 @@ Calculator.prototype = {
 				stack.push(token);
 			}
 		}
-		
-		console.log(stack);
 		
 		return stack[stack.length-1]
 	},
